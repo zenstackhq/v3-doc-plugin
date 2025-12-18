@@ -14,8 +14,11 @@ const cliPlugin: CliPlugin = {
 
     let output = "# Password Fields Report\n\n";
 
+    // for each data model
     for (const dm of model.declarations.filter(isDataModel)) {
+      // for each field
       for (const field of dm.fields) {
+        // check if it has @password attribute
         const passwordAttr = field.attributes.find(
           (attr) => attr.decl.$refText === "@password"
         );
