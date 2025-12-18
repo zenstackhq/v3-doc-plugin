@@ -31,74 +31,12 @@ export class SchemaType implements SchemaDef {
                     name: "password",
                     type: "String",
                     attributes: [{ name: "@password", args: [{ name: "hasher", value: ExpressionUtils.call("bcryptHasher", [ExpressionUtils.literal(12)]) }] }]
-                },
-                posts: {
-                    name: "posts",
-                    type: "Post",
-                    array: true,
-                    relation: { opposite: "author" }
                 }
             },
             idFields: ["id"],
             uniqueFields: {
                 id: { type: "String" },
                 email: { type: "String" }
-            }
-        },
-        Post: {
-            name: "Post",
-            fields: {
-                id: {
-                    name: "id",
-                    type: "String",
-                    id: true,
-                    attributes: [{ name: "@id" }, { name: "@default", args: [{ name: "value", value: ExpressionUtils.call("cuid") }] }],
-                    default: ExpressionUtils.call("cuid")
-                },
-                createdAt: {
-                    name: "createdAt",
-                    type: "DateTime",
-                    attributes: [{ name: "@default", args: [{ name: "value", value: ExpressionUtils.call("now") }] }],
-                    default: ExpressionUtils.call("now")
-                },
-                updatedAt: {
-                    name: "updatedAt",
-                    type: "DateTime",
-                    updatedAt: true,
-                    attributes: [{ name: "@updatedAt" }]
-                },
-                title: {
-                    name: "title",
-                    type: "String",
-                    attributes: [{ name: "@length", args: [{ name: "min", value: ExpressionUtils.literal(1) }, { name: "max", value: ExpressionUtils.literal(256) }] }]
-                },
-                content: {
-                    name: "content",
-                    type: "String"
-                },
-                published: {
-                    name: "published",
-                    type: "Boolean",
-                    attributes: [{ name: "@default", args: [{ name: "value", value: ExpressionUtils.literal(false) }] }],
-                    default: false
-                },
-                author: {
-                    name: "author",
-                    type: "User",
-                    attributes: [{ name: "@relation", args: [{ name: "fields", value: ExpressionUtils.array([ExpressionUtils.field("authorId")]) }, { name: "references", value: ExpressionUtils.array([ExpressionUtils.field("id")]) }, { name: "onDelete", value: ExpressionUtils.literal("Cascade") }] }],
-                    relation: { opposite: "posts", fields: ["authorId"], references: ["id"], onDelete: "Cascade" }
-                },
-                authorId: {
-                    name: "authorId",
-                    type: "String",
-                    foreignKeyFor: [
-                        "author"
-                    ]
-                }
-            },
-            idFields: ["id"],
-            uniqueFields: {
-                id: { type: "String" }
             }
         }
     } as const;
