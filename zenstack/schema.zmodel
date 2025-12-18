@@ -1,0 +1,16 @@
+/// A sample data source using local sqlite db.
+datasource db {
+    provider = 'sqlite'
+    url = 'file:./dev.db'
+}
+
+plugin password {
+    provider = "./password-plugin"
+    report = true
+}
+
+model User {
+    id       String @id @default(cuid())
+    email    String @unique @email
+    password String @password(hasher: bcryptHasher(12))
+}
