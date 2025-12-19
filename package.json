@@ -9,17 +9,17 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@zenstackhq/orm": "^3.0.0-beta.33",
+    "@zenstackhq/orm": "^3.0.0-beta.34",
     "bcryptjs": "^2.4.3",
     "better-sqlite3": "^12.5.0"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^25.0.3",
-    "@zenstackhq/cli": "^3.0.0-beta.33",
-    "@zenstackhq/sdk": "^3.0.0-beta.33",
+    "@zenstackhq/cli": "^3.0.0-beta.34",
+    "@zenstackhq/sdk": "^3.0.0-beta.34",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3",
-    "@types/bcryptjs": "^2.4.6"
+    "typescript": "^5.9.3"
   }
 }
