@@ -1,18 +1,19 @@
 import { ZenStackClient } from "@zenstackhq/orm";
-import { SqliteDialect } from "@zenstackhq/orm/dialects/sqlite";
-import SQLite from "better-sqlite3";
-import { schema } from "./zenstack/schema";
+import { SqlJsDialect } from "@zenstackhq/orm/dialects/sql.js";
+import initSqlJs from "sql.js";
 import { PasswordHasherPlugin } from "./password-hasher-plugin";
+import { schema } from "./zenstack/schema";
 
 async function main() {
+  const SQL = await initSqlJs();
+
   const db = new ZenStackClient(schema, {
-    dialect: new SqliteDialect({
-      database: new SQLite("./zenstack/dev.db"),
-    }),
+    dialect: new SqlJsDialect({ sqlJs: new SQL.Database() }),
     plugins: [new PasswordHasherPlugin()],
   });
 
-  await db.user.deleteMany();
+  // push database schema
+  await db.$pushSchema();
 
   console.log("Creating user with plain text password...");
   const user = await db.user.create({
