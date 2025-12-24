@@ -6,11 +6,9 @@ attribute @password(hasher: Any) @@@targetField([StringField])
 /**
  * Bcrypt password hasher.
  */
-function bcryptHasher(rounds: Int): Any {
-}
+function bcryptHasher(rounds: Int): Any {}
 
 /**
  * Argon2 password hasher.
  */
-function argon2Hasher(hashLength: Int?): Any {
-}
+function argon2Hasher(hashLength: Int?): Any {}
