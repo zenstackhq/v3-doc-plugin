@@ -9,7 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@zenstackhq/orm": "^3.0.0-beta.34",
+    "@zenstackhq/orm": "^3.0.0",
     "bcryptjs": "^2.4.3",
     "sql.js": "^1.13.0"
   },
@@ -17,8 +17,8 @@
     "@types/bcryptjs": "^2.4.6",
     "@types/node": "^25.0.3",
     "@types/sql.js": "^1.4.9",
-    "@zenstackhq/cli": "^3.0.0-beta.34",
-    "@zenstackhq/sdk": "^3.0.0-beta.34",
+    "@zenstackhq/cli": "^3.0.0",
+    "@zenstackhq/sdk": "^3.0.0",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3"
   }
