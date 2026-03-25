@@ -5,7 +5,7 @@
 
 /* eslint-disable */
 
-import { type SchemaDef, ExpressionUtils } from "@zenstackhq/schema";
+import { type SchemaDef, type AttributeApplication, type FieldDefault, ExpressionUtils } from "@zenstackhq/schema";
 export class SchemaType implements SchemaDef {
     provider = {
         type: "sqlite"
@@ -18,19 +18,19 @@ export class SchemaType implements SchemaDef {
                     name: "id",
                     type: "String",
                     id: true,
-                    attributes: [{ name: "@id" }, { name: "@default", args: [{ name: "value", value: ExpressionUtils.call("cuid") }] }],
-                    default: ExpressionUtils.call("cuid")
+                    attributes: [{ name: "@id" }, { name: "@default", args: [{ name: "value", value: ExpressionUtils.call("cuid") }] }] as readonly AttributeApplication[],
+                    default: ExpressionUtils.call("cuid") as FieldDefault
                 },
                 email: {
                     name: "email",
                     type: "String",
                     unique: true,
-                    attributes: [{ name: "@unique" }, { name: "@email" }]
+                    attributes: [{ name: "@unique" }, { name: "@email" }] as readonly AttributeApplication[]
                 },
                 password: {
                     name: "password",
                     type: "String",
-                    attributes: [{ name: "@password", args: [{ name: "hasher", value: ExpressionUtils.call("bcryptHasher", [ExpressionUtils.literal(12)]) }] }]
+                    attributes: [{ name: "@password", args: [{ name: "hasher", value: ExpressionUtils.call("bcryptHasher", [ExpressionUtils.literal(12)]) }] }] as readonly AttributeApplication[]
                 }
             },
             idFields: ["id"],
