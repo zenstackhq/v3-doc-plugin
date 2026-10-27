@@ -24,7 +24,7 @@ const cliPlugin: CliPlugin = {
         );
         if (passwordAttr) {
           const hasherArg = passwordAttr.args.find(
-            (arg) => arg.$resolvedParam.name === "hasher"
+            (arg) => arg.$resolvedParam?.name === "hasher"
           );
           const hasherName = hasherArg?.value
             ? (hasherArg.value as InvocationExpr).function.$refText

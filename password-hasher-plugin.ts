@@ -212,7 +212,7 @@ class PasswordHasherTransformer extends OperationNodeTransformer {
 }
 
 export class PasswordHasherPlugin<Schema extends SchemaDef = SchemaDef>
-  implements RuntimePlugin<Schema>
+  implements RuntimePlugin<Schema, {}, {}, {}>
 {
   id = "password-hasher";
 
